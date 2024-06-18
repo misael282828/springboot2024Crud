@@ -5,22 +5,7 @@ $(document).ready(function() {
   $('#usuarios').DataTable();
 });
 
-// async function cargarUsuario( ) {
-  
-//   const request = await fetch('usuario/2828', {
-//     method: 'GET',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     },
-//   });
-//   const usuarios = await request.json();
 
-//   console.log("hola mundo");
-
-
-
-// }
 
 async function cargarUsuario() {
   
@@ -49,8 +34,6 @@ async function cargarUsuario() {
     // Logging the fetched data (for demonstration)
     //console.log(usuarios);
 
-
-    
     document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
 ;
  
