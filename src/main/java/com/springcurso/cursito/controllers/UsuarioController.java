@@ -28,12 +28,12 @@ public UsuarioModel getUsuario(@PathVariable Long id){
    return usuarioModel;
 }
 
-@RequestMapping("test1")
-public List<UsuarioModel>  listaUsuarios(){
+@RequestMapping("usuarios")
+public List<UsuarioModel>  getusuarios(){
    List<UsuarioModel> usuarios = new ArrayList<>();//crear lista de usuarios
    UsuarioModel usuarioModel = new UsuarioModel();
 
-   usuarioModel.setId(123L);
+   usuarioModel.setId(100L);
    usuarioModel.setNombre("Misael");
    usuarioModel.setApellido("guzman");
    usuarioModel.setEmail("Misael@gmail");
@@ -48,18 +48,18 @@ public List<UsuarioModel>  listaUsuarios(){
    usuarioModel2.setTelefono("80976758767");
    usuarios.add(usuarioModel2);
 
- UsuarioModel usuarioModel3 = new UsuarioModel();
+   UsuarioModel usuarioModel3 = new UsuarioModel();
    usuarioModel3.setId(12233L);
    usuarioModel3.setNombre("tercero");
-   usuarioModel3.setApellido("guzman");
-   usuarioModel3.setEmail("Misael@gmail");
-   usuarioModel3.setTelefono("80976758767");
-  usuarios.add(usuarioModel3);
+   usuarioModel3.setApellido("garcia");
+   usuarioModel3.setEmail("tercero@gmail");
+   usuarioModel3.setTelefono("8092451432");
+   usuarios.add(usuarioModel3);
 
    return usuarios;
 }
     
-@GetMapping("usuariotest")
+@GetMapping("editar")
 public UsuarioModel editar(){
    UsuarioModel usuarioModel = new UsuarioModel();
 
