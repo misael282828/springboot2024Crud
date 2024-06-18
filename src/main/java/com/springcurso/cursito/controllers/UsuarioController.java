@@ -4,8 +4,7 @@ package com.springcurso.cursito.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +48,7 @@ public List<UsuarioModel>  listaUsuarios(){
    usuarioModel2.setTelefono("80976758767");
    usuarios.add(usuarioModel2);
 
-UsuarioModel usuarioModel3 = new UsuarioModel();
+ UsuarioModel usuarioModel3 = new UsuarioModel();
    usuarioModel3.setId(12233L);
    usuarioModel3.setNombre("tercero");
    usuarioModel3.setApellido("guzman");
@@ -87,16 +86,6 @@ public UsuarioModel eliminar(){
 }
 
 
-//   private static final Logger logger = LoggerFactory.getLogger(UsuarioController.class);
-
-//     @GetMapping("/test")
-//     public String testLogging() {
-//         logger.info("Request received on /test endpoint");
-//         logger.warn("Warning: This is a test warning message");
-//         logger.error("Error: Simulated error occurred");
-
-//         return "Logging test completed";
-//     }
 
 // @GetMapping("usuario")
 // public UsuarioModel buscar(){

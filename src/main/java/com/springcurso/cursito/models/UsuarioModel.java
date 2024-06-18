@@ -8,10 +8,6 @@ private String email;
 private String telefono; 
 private String password;
 
-
-
-
-
 public Long getId() {
     return id;
 }
