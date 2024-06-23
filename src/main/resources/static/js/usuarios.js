@@ -1,6 +1,6 @@
 
 // Call the dataTables jQuery plugin
-$(document).ready(function() {
+$(document).ready(function () {
   cargarUsuario()
   $('#usuarios').DataTable();
 });
@@ -8,33 +8,33 @@ $(document).ready(function() {
 
 
 async function cargarUsuario() {
-  
-    // Fetching data from the server
-    const response = await fetch('usuarios', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
 
-    // Parsing the response body as JSON
-    const usuarios = await response.json();
+  // Fetching data from the server
+  const response = await fetch('usuarios', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
 
-    let listadoHtml = ''
+  // Parsing the response body as JSON
+  const usuarios = await response.json();
 
-    for (let usuario of usuarios){
+  let listadoHtml = ''
 
-      let usuariosHtml = '<tr><td>'+usuario.id+'</td><td>'+usuario.nombre + ' ' + usuario.apellido+'</td><td>'+usuario.email+'</td><td>'+usuario.telefono+
+  for (let usuario of usuarios) {
+
+    let usuariosHtml = '<tr><td>' + usuario.id + '</td><td>' + usuario.nombre + ' ' + usuario.apellido + '</td><td>' + usuario.email + '</td><td>' + usuario.telefono +
       '</td><td><a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></td></tr>'
 
-      listadoHtml+= usuariosHtml;
-    }
+    listadoHtml += usuariosHtml;
+  }
 
-    // Logging the fetched data (for demonstration)
-    //console.log(usuarios);
+  // Logging the fetched data (for demonstration)
+  //console.log(usuarios);
 
-    document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
-;
- 
+  document.querySelector('#usuarios tbody').outerHTML = listadoHtml;
+  ;
+
 }
