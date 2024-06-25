@@ -8,4 +8,7 @@ import com.springcurso.cursito.models.UsuarioModel;
 public interface UsuarioDao {
 
   List<UsuarioModel> getUsuario();
+
+  void eliminar(Long id);
+
 }

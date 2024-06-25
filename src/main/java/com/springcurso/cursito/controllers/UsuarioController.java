@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springcurso.cursito.dao.UsuarioDao;
 import com.springcurso.cursito.models.UsuarioModel;
+
+
 
 @RestController
 public class UsuarioController {
@@ -17,7 +20,7 @@ public class UsuarioController {
    @Autowired
    private UsuarioDao usuarioDao; // inyeccion de dependencia 
 
-   @GetMapping("usuario/{id}")
+   @GetMapping("api/usuarios/{id}")
    public UsuarioModel getUsuario(@PathVariable Long id) {
       UsuarioModel usuarioModel = new UsuarioModel();
       usuarioModel.setId(id);
@@ -29,7 +32,7 @@ public class UsuarioController {
       return usuarioModel;
    }
 
-   @RequestMapping("usuarios")
+   @RequestMapping("api/usuarios")
    public List<UsuarioModel> getusuarios() {
 
       return usuarioDao.getUsuario();//implementar funciones de UsuarioDao
@@ -48,16 +51,10 @@ public class UsuarioController {
 
    }
 
-   @GetMapping("/eliminar")
-   public UsuarioModel eliminar() {
-      UsuarioModel usuarioModel = new UsuarioModel();
-
-      usuarioModel.setNombre("Misael");
-      usuarioModel.setApellido("guzman");
-      usuarioModel.setEmail("Misael@gmail");
-      usuarioModel.setTelefono("80976758767");
-
-      return usuarioModel;
+   @RequestMapping(value = "/api/usuarios/{id}",method = RequestMethod.DELETE)
+   public void eliminar(@PathVariable Long id) {
+    usuarioDao.eliminar(id);
+      
 
    }
 
