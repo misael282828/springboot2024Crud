@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,11 +33,19 @@ public class UsuarioController {
       return usuarioModel;
    }
 
-   @RequestMapping("api/usuarios")
+   @RequestMapping(value = "/api/usuarios",method = RequestMethod.GET)
    public List<UsuarioModel> getusuarios() {
 
       return usuarioDao.getUsuario();//implementar funciones de UsuarioDao
    }
+
+   @RequestMapping(value = "/api/usuarios",method = RequestMethod.POST)
+   public void  registrarUsuarios(@RequestBody UsuarioModel usuario) {
+
+       usuarioDao.registrar(usuario);//implementar funciones de UsuarioDao
+   }
+
+
 
    @GetMapping("editar")
    public UsuarioModel editar() {
