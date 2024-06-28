@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springcurso.cursito.dao.UsuarioDao;
-import com.springcurso.cursito.models.UsuarioModel;
+import com.springcurso.cursito.models.Usuario;
 
 
 
@@ -22,25 +22,25 @@ public class UsuarioController {
    private UsuarioDao usuarioDao; // inyeccion de dependencia 
 
    @GetMapping("api/usuarios/{id}")
-   public UsuarioModel getUsuario(@PathVariable Long id) {
-      UsuarioModel usuarioModel = new UsuarioModel();
-      usuarioModel.setId(id);
-      usuarioModel.setNombre("Misael");
-      usuarioModel.setApellido("guzman");
-      usuarioModel.setEmail("Misael@gmail");
-      usuarioModel.setTelefono("80976758767");
+   public Usuario getUsuario(@PathVariable Long id) {
+      Usuario Usuario = new Usuario();
+      Usuario.setId(id);
+      Usuario.setNombre("Misael");
+      Usuario.setApellido("guzman");
+      Usuario.setEmail("Misael@gmail");
+      Usuario.setTelefono("80976758767");
 
-      return usuarioModel;
+      return Usuario;
    }
 
    @RequestMapping(value = "/api/usuarios",method = RequestMethod.GET)
-   public List<UsuarioModel> getusuarios() {
+   public List<Usuario> getusuarios() {
 
       return usuarioDao.getUsuario();//implementar funciones de UsuarioDao
    }
 
    @RequestMapping(value = "/api/usuarios",method = RequestMethod.POST)
-   public void  registrarUsuarios(@RequestBody UsuarioModel usuario) {
+   public void  registrarUsuarios(@RequestBody Usuario usuario) {
 
        usuarioDao.registrar(usuario);//implementar funciones de UsuarioDao
    }
@@ -48,15 +48,15 @@ public class UsuarioController {
 
 
    @GetMapping("editar")
-   public UsuarioModel editar() {
-      UsuarioModel usuarioModel = new UsuarioModel();
+   public Usuario editar() {
+      Usuario Usuario = new Usuario();
 
-      // usuarioModel.setNombre("asd");
-      usuarioModel.setApellido("guzman");
-      usuarioModel.setEmail("Misael@gmail");
-      usuarioModel.setTelefono("80976758767");
+      // Usuario.setNombre("asd");
+      Usuario.setApellido("guzman");
+      Usuario.setEmail("Misael@gmail");
+      Usuario.setTelefono("80976758767");
 
-      return usuarioModel;
+      return Usuario;
 
    }
 

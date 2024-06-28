@@ -15,7 +15,7 @@ import lombok.ToString;
 @Entity
 @ToString
 @EqualsAndHashCode
-public class UsuarioModel {
+public class Usuario {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
