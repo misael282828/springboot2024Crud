@@ -36,10 +36,14 @@ async function registrarUsuario() {
           throw new Error('Error en la solicitud: ' + response.statusText);
       }
 
-      
+      alert(
+        "Cuenta fue creada exitosamenete!!"
+        ,window.location.href = "login.html"
+      )
     
   } catch (error) {
       console.error('Error:', error);
      
   }
+
 }

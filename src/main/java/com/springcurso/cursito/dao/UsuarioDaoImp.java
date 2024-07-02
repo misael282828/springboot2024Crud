@@ -3,16 +3,17 @@ package com.springcurso.cursito.dao;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+  import org.springframework.transaction.annotation.Transactional;
 
 import com.springcurso.cursito.models.Usuario;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 @Repository // para base de datos
 @Transactional // para consultas de SQL
-
 public class UsuarioDaoImp implements UsuarioDao {
 
   @PersistenceContext
@@ -41,19 +42,27 @@ public class UsuarioDaoImp implements UsuarioDao {
     entityManager.merge(usuario);
   }
 
+  @SuppressWarnings("deprecation")
   @Override
   public boolean verificarEmailPassword(Usuario usuario) {
 
-    String query = "FROM Usuario WHERE email = :email AND password = :password";
+    String query = "FROM Usuario WHERE email = :email";
    
     @SuppressWarnings("unchecked")
     List<Usuario> lista = (List<Usuario>) entityManager.createQuery(query)
     .setParameter("email", usuario.getEmail())
-    .setParameter("password", usuario.getPassword())
     .getResultList();
     
-    
-    return !lista.isEmpty();
+
+    if (lista.isEmpty()) {
+      return false;
+    }
+    //obtener el hash que esta en la BD
+    String passwordHashed = lista.get(0).getPassword();
+
+    //Validar el hash con la password digitado 
+    Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+    return argon2.verify(passwordHashed, usuario.getPassword());
   }
 
 }
